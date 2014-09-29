@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>57AFF4DE-C59E-4DE0-9EF1-43F712802EDE</string>
+	<string>F0B4BE4E-BAE6-48D9-AEC4-CEBF6130AF5D</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Twitter</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>F2C9536F1F7669941E6CBB9FD17DD2C6693D47C8</key>
-		<string>https://github.com/nabiber/Twitter.git</string>
+		<string>http://github.com/nabiber/Twitter.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Twitter.xcworkspace</string>
@@ -21,7 +21,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/nabiber/Twitter.git</string>
+	<string>http://github.com/nabiber/Twitter.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

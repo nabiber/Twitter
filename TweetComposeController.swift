@@ -1,50 +1,36 @@
 //
-//  TweetsViewController.swift
+//  TweetComposeController.swift
 //  Twitter
 //
-//  Created by Nabib El-Rahman on 9/28/14.
+//  Created by Nabib El-RAHMAN on 9/28/14.
 //  Copyright (c) 2014 Nabib El-RAHMAN. All rights reserved.
 //
 
 import UIKit
 
-class TweetsViewController: UIViewController {
-    
-    var tweets: [Tweet]?
+class TweetComposeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var color: UIColor = UIColor(red: CGFloat(64/255.0), green: CGFloat(153/255.0), blue: CGFloat(1), alpha: CGFloat(1))
+        var color: UIColor = UIColor(red: CGFloat(253/255.0), green: CGFloat(253/255.0), blue: CGFloat(253/255.0), alpha: CGFloat(1))
         self.navigationController?.navigationBar.barTintColor = color
         
 
         // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
-            if tweets != nil {
-                self.tweets = tweets
-            }
-        }
     }
-    
-    
-    @IBAction func onNewTweet(sender: AnyObject) {
-        println("Calling on New Sweet")
-        self.performSegueWithIdentifier("newTweetSegue", sender: self)
-    }
-    
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func onLogout(sender: UIButton) {
-        User.currentUser?.logout()
+    
+    @IBAction func onCancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+
     /*
     // MARK: - Navigation
 
