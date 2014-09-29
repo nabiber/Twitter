@@ -187,6 +187,7 @@
 				TargetAttributes = {
 					A86A199A19D8BD6300885DDB = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = MJ472XN8MV;
 					};
 					A86A19AC19D8BD6400885DDB = {
 						CreatedOnToolsVersion = 6.0;

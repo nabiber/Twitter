@@ -10,7 +10,7 @@ import UIKit
 
 let twitterConsumerKey = "MzdQ7KS3CXuf55UYdh44MEmW2"
 let twitterConsumerSecret = "HToPH73qzAILKTHfaCok7k2knKmlBJU8xiHEEamxnXs4wTmAkf"
-let twitterBaseURL = NSURL(string: "http://api.twitter.com")
+let twitterBaseURL = NSURL(string: "https://api.twitter.com")
 
 class TwitterClient: BDBOAuth1RequestOperationManager {
     
