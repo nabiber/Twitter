@@ -8,15 +8,20 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tweets: [Tweet]?
-
+    
+    @IBOutlet weak var tweetsTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var color: UIColor = UIColor(red: CGFloat(64/255.0), green: CGFloat(153/255.0), blue: CGFloat(1), alpha: CGFloat(1))
-        self.navigationController?.navigationBar.barTintColor = color
+        self.tweetsTableView?.delegate = self
+        self.tweetsTableView?.dataSource = self
+        
+        
+        self.navigationController?.navigationBar.barTintColor = Helper.twitterBlue()
         
 
         // Do any additional setup after loading the view.
@@ -24,6 +29,7 @@ class TweetsViewController: UIViewController {
             if tweets != nil {
                 self.tweets = tweets
             }
+            self.tweetsTableView.reloadData()
         }
     }
     
@@ -45,6 +51,25 @@ class TweetsViewController: UIViewController {
     @IBAction func onLogout(sender: UIButton) {
         User.currentUser?.logout()
     }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tweets?.count ?? 0
+    }
+    
+    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tweetsTableView.dequeueReusableCellWithIdentifier("TweetCell") as? TweetCell
+    
+        var tweet = self.tweets![indexPath.row] as Tweet
+        
+        cell!.tweet = tweet
+        
+        return cell!
+    }
+    
+    
     /*
     // MARK: - Navigation
 

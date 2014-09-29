@@ -13,8 +13,7 @@ class TweetComposeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var color: UIColor = UIColor(red: CGFloat(253/255.0), green: CGFloat(253/255.0), blue: CGFloat(253/255.0), alpha: CGFloat(1))
-        self.navigationController?.navigationBar.barTintColor = color
+        self.navigationController?.navigationBar.barTintColor = Helper.offWhite()
         
 
         // Do any additional setup after loading the view.
