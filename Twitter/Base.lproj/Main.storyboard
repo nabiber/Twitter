@@ -50,6 +50,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="onCancel:" destination="bbh-lP-ZoW" eventType="touchUpInside" id="k5J-nv-4We"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="JMu-Zl-cNT">
