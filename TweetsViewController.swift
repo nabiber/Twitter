@@ -14,6 +14,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tweetsTableView: UITableView!
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +68,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell!.tweet = tweet
         
         return cell!
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if(segue.identifier == "singleTweetSeque") {
+            var singleTweetController = segue.destinationViewController as SingleTweetViewController
+        
+            let tweetPath = self.tweetsTableView.indexPathForSelectedRow()! as NSIndexPath
+            let row = tweetPath.row
+            var tweet = self.tweets![row]
+        
+            singleTweetController.tweet = tweet
+        }
+        
     }
     
     

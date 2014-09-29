@@ -20,6 +20,7 @@
 		A8B35DC319D9352200B201A9 /* TweetComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC219D9352200B201A9 /* TweetComposeController.swift */; };
 		A8B35DC619D9423500B201A9 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC519D9423500B201A9 /* TweetCell.swift */; };
 		A8B35DC819D9470C00B201A9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC719D9470C00B201A9 /* Helper.swift */; };
+		A8B35DCA19D9515D00B201A9 /* SingleTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC919D9515D00B201A9 /* SingleTweetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A8B35DC219D9352200B201A9 /* TweetComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetComposeController.swift; sourceTree = "<group>"; };
 		A8B35DC519D9423500B201A9 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		A8B35DC719D9470C00B201A9 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		A8B35DC919D9515D00B201A9 /* SingleTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTweetViewController.swift; sourceTree = "<group>"; };
 		FF7373CC97EE4FA28B9A22A3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 				A86A19A219D8BD6300885DDB /* ViewController.swift */,
 				1D808E1E19D9070E00282F20 /* TweetsViewController.swift */,
 				A8B35DC219D9352200B201A9 /* TweetComposeController.swift */,
+				A8B35DC919D9515D00B201A9 /* SingleTweetViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -318,6 +321,7 @@
 			files = (
 				1D808E1B19D8E9AD00282F20 /* User.swift in Sources */,
 				1D808E1D19D8E9B700282F20 /* Tweet.swift in Sources */,
+				A8B35DCA19D9515D00B201A9 /* SingleTweetViewController.swift in Sources */,
 				1D808E1F19D9070E00282F20 /* TweetsViewController.swift in Sources */,
 				A8B35DC619D9423500B201A9 /* TweetCell.swift in Sources */,
 				A86A19A319D8BD6300885DDB /* ViewController.swift in Sources */,
