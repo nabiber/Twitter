@@ -10,6 +10,14 @@ import UIKit
 
 class TweetComposeController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    
+    @IBOutlet weak var tweetTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +37,15 @@ class TweetComposeController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    
+    @IBAction func onTweetCompose(sender: AnyObject) {
+        
+        var tweetMessage = self.tweetTextView.text
+        println("Tweet composed: \(tweetMessage)")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+   
 
     /*
     // MARK: - Navigation
