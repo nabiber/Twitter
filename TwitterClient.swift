@@ -39,6 +39,32 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             })
     }
     
+    func tweetWithCompletion(tweetText: String, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        var tweetParams: NSDictionary = ["status": tweetText]
+        self.statusWithCompletion(tweetParams, completion)
+    }
+    
+    func tweetReplyWithCompletion(tweetText: String, toUser: User, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        var tweetParams: NSDictionary = [
+                    "status": "@\(toUser.screename) \(tweetText)",
+                    "in_reply_to_status_id": toUser.id,
+            ]
+        self.statusWithCompletion(tweetParams, completion)
+    }
+    
+    private func statusWithCompletion(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        self.POST("1.1/statuses/update.json", parameters: params,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                // println("home_timeline: \(response)")
+                var tweet = Tweet(dictionary: (response as NSDictionary))
+                completion(tweet: tweet, error: nil)
+            },
+            failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println("error getting home timeline")
+                completion(tweet: nil, error: error)
+        })
+    }
+    
     func loginWithCompletion(completion: (user: User?, error: NSError?) -> ()) {
         self.loginCompletion = completion
         
@@ -80,6 +106,8 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
 
         
     }
+    
+    
 
     
    

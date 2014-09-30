@@ -42,7 +42,10 @@ class TweetComposeController: UIViewController {
     @IBAction func onTweetSend(sender: AnyObject) {
         var tweetMessage = self.tweetTextView.text
         println("Tweet composed: \(tweetMessage)")
-        self.dismissViewControllerAnimated(true, completion: nil)
+        TwitterClient.sharedInstance.tweetWithCompletion(tweetMessage) { (tweet, error) -> () in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
     }
     
 
