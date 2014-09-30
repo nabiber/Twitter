@@ -115,7 +115,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="onTweetCompose:" destination="bbh-lP-ZoW" eventType="touchUpInside" id="Rvg-ot-3k0"/>
+                                    <action selector="onTweetSend:" destination="bbh-lP-ZoW" eventType="touchUpInside" id="Orl-T8-F3T"/>
                                 </connections>
                             </button>
                         </barButtonItem>

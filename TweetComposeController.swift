@@ -39,13 +39,12 @@ class TweetComposeController: UIViewController {
     
     
     
-    @IBAction func onTweetCompose(sender: AnyObject) {
-        
+    @IBAction func onTweetSend(sender: AnyObject) {
         var tweetMessage = self.tweetTextView.text
         println("Tweet composed: \(tweetMessage)")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-   
+    
 
     /*
     // MARK: - Navigation
