@@ -21,6 +21,9 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tweetsTableView?.delegate = self
         self.tweetsTableView?.dataSource = self
         
+        self.tweetsTableView?.estimatedRowHeight = 135;
+        self.tweetsTableView?.rowHeight = UITableViewAutomaticDimension
+        
         
         self.navigationController?.navigationBar.barTintColor = Helper.twitterBlue()
         
@@ -69,7 +72,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         return cell!
     }
-    
+   
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120;
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         

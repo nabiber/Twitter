@@ -54,3 +54,9 @@
 #define COCOAPODS_VERSION_MINOR_BDBOAuth1Manager 4
 #define COCOAPODS_VERSION_PATCH_BDBOAuth1Manager 0
 
+// NSDateMinimalTimeAgo
+#define COCOAPODS_POD_AVAILABLE_NSDateMinimalTimeAgo
+#define COCOAPODS_VERSION_MAJOR_NSDateMinimalTimeAgo 0
+#define COCOAPODS_VERSION_MINOR_NSDateMinimalTimeAgo 1
+#define COCOAPODS_VERSION_PATCH_NSDateMinimalTimeAgo 0
+
