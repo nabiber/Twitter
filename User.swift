@@ -26,7 +26,7 @@ class User: NSObject {
         self.dictionary = dictionary
         self.id = dictionary["id"] as Int
         self.name = dictionary["name"] as? String
-        self.screename = dictionary["screen_name"] as? String
+        self.screename = "@" + (dictionary["screen_name"] as? String)!
         self.profileImageUrl = NSURL(string: dictionary["profile_image_url"] as String)
         self.tagline = dictionary["description"] as? String
     }

@@ -10,10 +10,31 @@ import UIKit
 
 class SingleTweetViewController: UIViewController {
     
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    
+    @IBOutlet weak var nameLabel: UILabel!
+ 
+    @IBOutlet weak var screenameLabel: UILabel!
+    
+    @IBOutlet weak var createAtLabel: UILabel!
+    
+    @IBOutlet weak var tweetTextLabel: UILabel!
+    
+    
+    
     var tweet: Tweet?
-
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.profileImageView.setImageWithURL(self.tweet?.user?.profileImageUrl)
+        self.nameLabel.text = self.tweet?.user?.name as String!
+        self.screenameLabel.text = self.tweet?.user?.screename as String!
+        self.createAtLabel.text = self.tweet?.createAtAgo as String!
+        self.tweetTextLabel.text = self.tweet?.text as String!
+        
 
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.barTintColor = Helper.twitterBlue()

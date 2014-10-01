@@ -30,7 +30,7 @@ class TweetReplyController: UIViewController {
         
         self.profileImageView.setImageWithURL(user?.profileImageUrl)
         
-        self.tweetTextView.text = "@\(tweet.user?.screename as String!)"
+        self.tweetTextView.text = tweet.user?.screename as String!
 
         // Do any additional setup after loading the view.
     }
