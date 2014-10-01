@@ -26,6 +26,20 @@ class SingleTweetViewController: UIViewController {
     }
     
 
+    @IBAction func onReplyTweet(sender: UIButton){
+    self.performSegueWithIdentifier("replyTweetSegue", sender: self)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if (segue.identifier == "replyTweetSegue") {
+            var navController = segue.destinationViewController as UINavigationController
+            var tweetReplyController = navController.viewControllers[0] as TweetReplyController
+            tweetReplyController.tweet = tweet
+        }
+    }
+
     /*
     // MARK: - Navigation
 

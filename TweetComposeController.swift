@@ -23,7 +23,13 @@ class TweetComposeController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = Helper.offWhite()
         
-
+        var user = User.currentUser
+        
+        self.nameLabel.text = user?.name
+        self.usernameLabel.text = user?.screename
+        
+        self.thumbnailImageView.setImageWithURL(user?.profileImageUrl)
+   
         // Do any additional setup after loading the view.
     }
 

@@ -36,7 +36,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     @IBAction func onNewTweet(sender: AnyObject) {
-        println("Calling on New Sweet")
+        println("Calling on New Tweet")
         self.performSegueWithIdentifier("newTweetSegue", sender: self)
     }
     
@@ -72,16 +72,16 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
-        if(segue.identifier == "singleTweetSeque") {
-            var singleTweetController = segue.destinationViewController as SingleTweetViewController
         
+        if(segue.identifier == "singleTweetSegue") {
             let tweetPath = self.tweetsTableView.indexPathForSelectedRow()! as NSIndexPath
             let row = tweetPath.row
             var tweet = self.tweets![row]
-        
+            
+            var singleTweetController = segue.destinationViewController as SingleTweetViewController
             singleTweetController.tweet = tweet
+            
         }
-        
     }
     
     
