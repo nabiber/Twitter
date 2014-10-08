@@ -19,6 +19,10 @@ class User: NSObject {
     var name: String?
     var screename: String?
     var profileImageUrl: NSURL?
+    var profileUseBackgroundImage: Bool?
+    var profileBackgroundImageUrl: NSURL?
+    var profileBannerUrl: NSURL?
+    var profileBackgroundColor: UIColor?
     var tagline: String?
     var dictionary: NSDictionary
     
@@ -28,7 +32,17 @@ class User: NSObject {
         self.name = dictionary["name"] as? String
         self.screename = "@" + (dictionary["screen_name"] as? String)!
         self.profileImageUrl = NSURL(string: dictionary["profile_image_url"] as String)
-        self.tagline = dictionary["description"] as? String
+        self.profileUseBackgroundImage = dictionary["profile_use_background_image"] as? Bool
+        if(self.profileUseBackgroundImage == true) {
+            self.profileBackgroundImageUrl = NSURL(string: dictionary["profile_background_image_url"] as String)
+        }
+        var backgroundHexColor = dictionary["profile_background_color"] as String
+        self.profileBackgroundColor = Helper.colorWithHexString(backgroundHexColor)
+        var profileBannerUrlStr = dictionary["profile_banner_url"] as? String
+        if(profileBannerUrlStr != nil) {
+            self.profileBannerUrl = NSURL(string: dictionary["profile_banner_url"] as String)
+        }
+        
     }
     
     func logout() {

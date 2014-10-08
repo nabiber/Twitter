@@ -69,9 +69,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var tweet = self.tweets![indexPath.row] as Tweet
         
         cell!.tweet = tweet
-        
+        cell!.segueCallback = self.cellCallback
         return cell!
     }
+    
+    func cellCallback(tweet: Tweet) -> Void {
+        println("CALLBACK")
+        self.performSegueWithIdentifier("profileViewSegue", sender: self)
+    }
+
    
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 120;

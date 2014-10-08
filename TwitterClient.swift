@@ -89,7 +89,7 @@ class TwitterClient: BDBOAuth1RequestOperationManager {
             self.requestSerializer.saveAccessToken(accessToken)
             
             self.GET("1.1/account/verify_credentials.json", parameters: nil, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                //    println("user: \(response)")
+                println("user: \(response)")
                 var user = User(dictionary: response as NSDictionary)
                 User.currentUser = user
                 println("user: \(user.name)")

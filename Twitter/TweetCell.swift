@@ -8,13 +8,11 @@
 
 import UIKit
 
-class TweetCell: UITableViewCell {
+class TweetCell: UITableViewCell, UIGestureRecognizerDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-               // Initialization code
     }
-    
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -51,10 +49,16 @@ class TweetCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var segueCallback: ((tweet: Tweet) -> Void)?
+    
     var tweet: Tweet! {
         
         willSet(tweet) {
             populateCell(tweet)
+            var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("onTapProfileImageView:"))
+            
+            self.profileImageView.addGestureRecognizer(tapGestureRecognizer)
+
         }
         
         
@@ -65,12 +69,19 @@ class TweetCell: UITableViewCell {
     
     func populateCell(tweet: Tweet)
     {
+        
         self.nameLabel.text = tweet.user?.name!
         self.tweetTextLabel.text = tweet.text
         self.screennameLabel.text = tweet.user?.screename!
         self.createdAtLabel.text = tweet.createAtAgo!
         self.profileImageView.setImageWithURL(tweet.user?.profileImageUrl)
-         
+        
+        
+    }
+    
+    func onTapProfileImageView(recognizer: UITapGestureRecognizer) {
+        println("TAPPED!")
+        self.segueCallback!(tweet: self.tweet)
     }
 
 
