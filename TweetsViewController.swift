@@ -75,7 +75,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func cellCallback(tweet: Tweet) -> Void {
         println("CALLBACK")
-        self.performSegueWithIdentifier("profileViewSegue", sender: self)
+        self.performSegueWithIdentifier("profileViewSegue", sender: tweet)
     }
 
    
@@ -92,6 +92,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             var singleTweetController = segue.destinationViewController as SingleTweetViewController
             singleTweetController.tweet = tweet
+            
+        } else if(segue.identifier == "profileViewSegue") {
+            var profileViewController = segue.destinationViewController as ProfileViewController
+            profileViewController.user = (sender as Tweet).user
             
         }
     }

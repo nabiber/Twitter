@@ -17,7 +17,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.user = User.currentUser
+      //  self.user = User.currentUser
         
         self.profileBannerImageView.setImageWithURL(self.user.profileBannerUrl)
         // Do any additional setup after loading the view.
