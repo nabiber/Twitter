@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             (user: User?, error: NSError?) in
             if(user != nil) {
                 //form segue
-                self.performSegueWithIdentifier("loginSegue", sender: self)
+                self.performSegueWithIdentifier("signInSegue", sender: self)
             } else {
                 //handle login error
             }

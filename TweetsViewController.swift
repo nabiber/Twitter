@@ -20,18 +20,29 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("INSIDE IS MENTION: \(self.isMentions)")
+        
         self.tweetsTableView?.delegate = self
         self.tweetsTableView?.dataSource = self
         
         self.navigationController?.navigationBar.barTintColor = Helper.twitterBlue()
         
-
-        // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
-            if tweets != nil {
-                self.tweets = tweets
+        if (self.isMentions == false) {
+           // Do any additional setup after loading the view.
+           TwitterClient.sharedInstance.homeTimelineWithParams(nil) { (tweets, error) -> () in
+               if tweets != nil {
+                   self.tweets = tweets
+               }
+               self.tweetsTableView.reloadData()
             }
-            self.tweetsTableView.reloadData()
+        } else {
+            TwitterClient.sharedInstance.mentionsTimelineWithCompletion(nil) { (tweets, error) -> () in
+                if tweets != nil {
+                    self.tweets = tweets
+                }
+                self.tweetsTableView.reloadData()
+            }
+            
         }
     }
     
