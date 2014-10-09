@@ -21,6 +21,8 @@
 		A86A19A619D8BD6300885DDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A86A19A419D8BD6300885DDB /* Main.storyboard */; };
 		A86A19A819D8BD6300885DDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A86A19A719D8BD6300885DDB /* Images.xcassets */; };
 		A86A19B419D8BD6400885DDB /* TwitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A86A19B319D8BD6400885DDB /* TwitterTests.swift */; };
+		A89E2CF919E6169300E6ADF1 /* MentionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E2CF819E6169300E6ADF1 /* MentionCell.swift */; };
+		A89E2CFD19E63BCD00E6ADF1 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89E2CFC19E63BCD00E6ADF1 /* HamburgerViewController.swift */; };
 		A8B35DC019D8BF2300B201A9 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DBF19D8BF2300B201A9 /* TwitterClient.swift */; };
 		A8B35DC319D9352200B201A9 /* TweetComposeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC219D9352200B201A9 /* TweetComposeController.swift */; };
 		A8B35DC619D9423500B201A9 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B35DC519D9423500B201A9 /* TweetCell.swift */; };
@@ -57,6 +59,8 @@
 		A86A19AD19D8BD6400885DDB /* TwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86A19B219D8BD6400885DDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86A19B319D8BD6400885DDB /* TwitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterTests.swift; sourceTree = "<group>"; };
+		A89E2CF819E6169300E6ADF1 /* MentionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionCell.swift; sourceTree = "<group>"; };
+		A89E2CFC19E63BCD00E6ADF1 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		A8B35DBB19D8BE9200B201A9 /* Twitter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Twitter-Bridging-Header.h"; sourceTree = "<group>"; };
 		A8B35DBF19D8BF2300B201A9 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		A8B35DC219D9352200B201A9 /* TweetComposeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetComposeController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				A8B35DC919D9515D00B201A9 /* SingleTweetViewController.swift */,
 				A84A713819DBB4A6009ADD15 /* TweetReplyController.swift */,
 				A81933DE19E4AB7000247BF5 /* ProfileViewController.swift */,
+				A89E2CFC19E63BCD00E6ADF1 /* HamburgerViewController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -195,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				A8B35DC519D9423500B201A9 /* TweetCell.swift */,
+				A89E2CF819E6169300E6ADF1 /* MentionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -343,11 +349,13 @@
 				1D808E1F19D9070E00282F20 /* TweetsViewController.swift in Sources */,
 				A8B35DC619D9423500B201A9 /* TweetCell.swift in Sources */,
 				A86A19A319D8BD6300885DDB /* ViewController.swift in Sources */,
+				A89E2CFD19E63BCD00E6ADF1 /* HamburgerViewController.swift in Sources */,
 				A81933DF19E4AB7000247BF5 /* ProfileViewController.swift in Sources */,
 				A84A713919DBB4A6009ADD15 /* TweetReplyController.swift in Sources */,
 				A8B35DC819D9470C00B201A9 /* Helper.swift in Sources */,
 				A8B35DC019D8BF2300B201A9 /* TwitterClient.swift in Sources */,
 				A86A19A119D8BD6300885DDB /* AppDelegate.swift in Sources */,
+				A89E2CF919E6169300E6ADF1 /* MentionCell.swift in Sources */,
 				A8B35DC319D9352200B201A9 /* TweetComposeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

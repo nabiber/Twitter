@@ -24,7 +24,13 @@ class User: NSObject {
     var profileBannerUrl: NSURL?
     var profileBackgroundColor: UIColor?
     var tagline: String?
+    var tweetCount: Int?
+    var followersCount: Int?
+    var followingCount: Int?
+    var favoritesCount: Int?
+
     var dictionary: NSDictionary
+   
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
@@ -42,6 +48,11 @@ class User: NSObject {
         if(profileBannerUrlStr != nil) {
             self.profileBannerUrl = NSURL(string: dictionary["profile_banner_url"] as String)
         }
+        
+        tweetCount = dictionary["statuses_count"] as? Int
+        followersCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
+        favoritesCount = dictionary["favourites_count"] as? Int
         
     }
     
