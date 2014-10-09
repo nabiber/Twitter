@@ -16,11 +16,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tweetsTableView: UITableView!
     
-   
+    var storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("INSIDE IS MENTION: \(self.isMentions)")
         
         self.tweetsTableView?.delegate = self
         self.tweetsTableView?.dataSource = self
@@ -84,7 +83,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func cellCallback(tweet: Tweet) -> Void {
         println("CALLBACK")
-        self.performSegueWithIdentifier("profileViewSegue", sender: tweet)
+        var vc = self.storyBoard.instantiateViewControllerWithIdentifier("HamburgerViewController") as HamburgerViewController
+        vc.profileUser = tweet.user
+        var window = UIApplication.sharedApplication().keyWindow
+        window.rootViewController = vc
     }
 
    

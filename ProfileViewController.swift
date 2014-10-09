@@ -41,8 +41,9 @@ class ProfileViewController: UIViewController {
             self.user = User.currentUser
         }
         
-        self.profileBannerImageView.setImageWithURL(self.user.profileBannerUrl!)
-        
+        if(self.user.profileBannerUrl != nil) {
+            self.profileBannerImageView.setImageWithURL(self.user.profileBannerUrl!)
+        }
         self.thumbnailImageView.setImageWithURL(self.user.profileImageUrl!)
         
         

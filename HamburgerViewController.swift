@@ -23,17 +23,21 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var mentionButton: UIButton!
     
     
-    var timelineViewController: TweetsViewController!
+    var timelineViewController: UINavigationController!
     var profileViewController: ProfileViewController!
-    var mentionsViewController: TweetsViewController!
-    
+    var mentionsViewController: UINavigationController!
+   
     var storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    
+    var profileUser: User?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+ 
         var user = User.currentUser
+        
         
         self.menuProfileImageView.setImageWithURL(user?.profileBannerUrl)
         
@@ -41,18 +45,27 @@ class HamburgerViewController: UIViewController {
         self.profileButton.setTitle(user!.name, forState: .Normal)
 
         // Do any additional setup after loading the view.
-        self.timelineViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewController") as TweetsViewController
-        self.timelineViewController.isMentions = false;
+        self.timelineViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as UINavigationController
         
-        println("Outside IS MENTION: \(self.timelineViewController.isMentions)")
+        var timelineViewVC = self.timelineViewController.viewControllers[0] as TweetsViewController
+        timelineViewVC.isMentions = false;
         
         self.profileViewController = self.storyBoard.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
-        self.mentionsViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewController") as TweetsViewController
-        self.mentionsViewController.isMentions = true;
+        
+        
+        self.mentionsViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as UINavigationController
+        
+        var mentionsViewVC = self.mentionsViewController.viewControllers[0] as TweetsViewController
+        mentionsViewVC.isMentions = false;
+        
         self.contentViewXConstraint.constant = 0
         
-        self.activeViewController = timelineViewController
-
+        if(self.profileUser != nil) {
+            self.profileViewController.user = self.profileUser
+            self.activeViewController = self.profileViewController
+        } else {
+            self.activeViewController = timelineViewController
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,6 +102,7 @@ class HamburgerViewController: UIViewController {
         if sender == profileButton {
             println("profile pressed!")
             hideMenu()
+            self.profileUser = nil
             self.activeViewController = profileViewController
         } else if sender == timelineButton {
             println("timeline pressed!")
