@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var profileBannerImageView: UIImageView!
     
@@ -27,6 +27,9 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileScreennameLabel: UILabel!
     
+    @IBOutlet weak var mentionsTableView: UITableView!
+    
+    var storyBoard = UIStoryboard(name: "Main", bundle: nil)
     
     
     var mentions: [Tweet]?
@@ -36,7 +39,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      //  self.user = User.currentUser
+        self.mentionsTableView?.delegate = self
+        self.mentionsTableView?.dataSource = self
+        
+        
+        
+        reload()
+        // Do any additional setup after loading the view.
+    }
+    
+    func reload() -> Void {
+        //  self.user = User.currentUser
         if (self.user == nil) {
             self.user = User.currentUser
         }
@@ -54,8 +67,42 @@ class ProfileViewController: UIViewController {
         self.profileName.text = "\(user.name!)"
         self.profileScreennameLabel.text = "\(user.screename!)"
         
+        var tweetParams: NSDictionary = [
+            "user_id": user.id,
+        ]
         
-        // Do any additional setup after loading the view.
+        TwitterClient.sharedInstance.userTimelineWithParams(tweetParams) { (tweets, error) -> () in
+            if tweets != nil {
+                self.mentions = tweets
+            }
+            self.mentionsTableView.reloadData()
+        }
+
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.mentions?.count ?? 0
+    }
+    
+    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = mentionsTableView.dequeueReusableCellWithIdentifier("TweetCell") as? TweetCell
+        
+        var tweet = self.mentions![indexPath.row] as Tweet
+        
+        cell!.tweet = tweet
+        cell!.segueCallback = self.cellCallback
+        return cell!
+    }
+    
+    func cellCallback(tweet: Tweet) -> Void {
+        println("PROFILE CALLBACK")
+        var vc = self.storyBoard.instantiateViewControllerWithIdentifier("HamburgerViewController") as HamburgerViewController
+        vc.profileUser = tweet.user
+        var window = UIApplication.sharedApplication().keyWindow
+        window.rootViewController = vc
     }
 
     override func didReceiveMemoryWarning() {

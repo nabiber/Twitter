@@ -56,7 +56,7 @@ class HamburgerViewController: UIViewController {
         self.mentionsViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewNavigationController") as UINavigationController
         
         var mentionsViewVC = self.mentionsViewController.viewControllers[0] as TweetsViewController
-        mentionsViewVC.isMentions = false;
+        mentionsViewVC.isMentions = true;
         
         self.contentViewXConstraint.constant = 0
         
@@ -103,6 +103,7 @@ class HamburgerViewController: UIViewController {
             println("profile pressed!")
             hideMenu()
             self.profileUser = nil
+            profileViewController.user = User.currentUser
             self.activeViewController = profileViewController
         } else if sender == timelineButton {
             println("timeline pressed!")
