@@ -18,7 +18,7 @@ Time spent: 13 hours spent in total
 * [ ] Optional: As the paging view moves, increase the opacity of the background screen.  See actual Twitter app for this effect.
 * [ ] Optional: Pulling down the profile page should blur and resize the header image.
 
-Also addes user tweets on profile page.
+* [X] Also added user tweets on profile page.
 
 #### Home Timeline
 * [x] Required: Tapping on a user image should bring up that user's profile page
