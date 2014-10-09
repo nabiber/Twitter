@@ -12,6 +12,8 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var tweets: [Tweet]?
     
+    var isMentions: Bool = false
+    
     @IBOutlet weak var tweetsTableView: UITableView!
     
    
@@ -20,10 +22,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.tweetsTableView?.delegate = self
         self.tweetsTableView?.dataSource = self
-        
-        //self.tweetsTableView?.estimatedRowHeight = 135;
-      //  self.tweetsTableView?.rowHeight = UITableViewAutomaticDimension
-        
         
         self.navigationController?.navigationBar.barTintColor = Helper.twitterBlue()
         

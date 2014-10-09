@@ -27,9 +27,9 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var mentionButton: UIButton!
     
     
-    var timelineViewController: UIViewController!
-    var profileViewController: UIViewController!
-    var mentionsViewController: UIViewController!
+    var timelineViewController: TweetsViewController!
+    var profileViewController: ProfileViewController!
+    var mentionsViewController: TweetsViewController!
     
     var storyBoard = UIStoryboard(name: "Main", bundle: nil)
     
@@ -45,9 +45,9 @@ class HamburgerViewController: UIViewController {
         self.profileButton.setTitle(user!.name, forState: .Normal)
 
         // Do any additional setup after loading the view.
-        timelineViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
-        profileViewController = self.storyBoard.instantiateViewControllerWithIdentifier("ProfileViewController") as UIViewController
-        //mentionsViewController = self.storyBoard.instantiateViewControllerWithIdentifier("MentionViewController") as UIViewController
+        self.timelineViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewController") as TweetsViewController
+        self.profileViewController = self.storyBoard.instantiateViewControllerWithIdentifier("ProfileViewController") as ProfileViewController
+        self.mentionsViewController = self.storyBoard.instantiateViewControllerWithIdentifier("MentionViewController") as TweetsViewController
         
         self.contentViewXConstraint.constant = 0
         
@@ -79,6 +79,7 @@ class HamburgerViewController: UIViewController {
                 newVC.view.frame = self.contentView.bounds
                 self.contentView.addSubview(newVC.view)
                 newVC.didMoveToParentViewController(self)
+                
             }
         }
     }
@@ -96,7 +97,7 @@ class HamburgerViewController: UIViewController {
         } else if sender == mentionButton {
             println("mention pressed!")
             hideMenu()
-            //self.activeViewController = mentionsViewController
+            self.activeViewController = mentionsViewController
         } else {
             println("unknown button pressed!")
         }
@@ -120,7 +121,7 @@ class HamburgerViewController: UIViewController {
             options: UIViewAnimationOptions.CurveEaseInOut,
             animations: { () in
                 self.contentViewXConstraint.constant = 0
-                self.view.layoutIfNeeded()
+               // self.view.layoutIfNeeded()
             },
             completion: { (finished) in
                 self.swipeGesture.direction = .Right
@@ -134,7 +135,7 @@ class HamburgerViewController: UIViewController {
             options: UIViewAnimationOptions.CurveEaseInOut,
             animations: { () in
                 self.contentViewXConstraint.constant = -160
-                self.view.layoutIfNeeded()
+               // self.view.layoutIfNeeded()
             },
             completion: { (finished) in
                 self.swipeGesture.direction = .Left

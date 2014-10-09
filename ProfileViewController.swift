@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileBannerImageView: UIImageView!
     
@@ -24,14 +24,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     @IBOutlet weak var profileName: UILabel!
-    var user: User!
     
     @IBOutlet weak var profileScreennameLabel: UILabel!
     
-    @IBOutlet weak var mentionTableView: UITableView!
     
     
     var mentions: [Tweet]?
+    var user: User!
     
     
     override func viewDidLoad() {
@@ -54,13 +53,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.profileName.text = "\(user.name!)"
         self.profileScreennameLabel.text = "\(user.screename!)"
         
-        // Do any additional setup after loading the view.
-        TwitterClient.sharedInstance.mentionsTimelineWithCompletion(nil) { (mentions, error) -> () in
-            if mentions != nil {
-                self.mentions = mentions
-            }
-            self.mentionTableView.reloadData()
-        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -68,24 +61,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mentions?.count ?? 0
-    }
-    
-    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = mentionTableView.dequeueReusableCellWithIdentifier("MentionCell") as? MentionCell
-        
-        var tweet = self.mentions![indexPath.row] as Tweet
-        
-        cell!.tweet = tweet
-      //  cell!.segueCallback = self.cellCallback
-        return cell!
-    }
-
     
 
     /*
