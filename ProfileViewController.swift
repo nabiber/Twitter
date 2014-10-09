@@ -38,6 +38,9 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
       //  self.user = User.currentUser
+        if (self.user == nil) {
+            self.user = User.currentUser
+        }
         
         self.profileBannerImageView.setImageWithURL(self.user.profileBannerUrl!)
         

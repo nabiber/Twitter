@@ -10,6 +10,11 @@ import UIKit
 
 class HamburgerViewController: UIViewController {
     
+    
+    @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
+    
+    
+    @IBOutlet weak var menuProfileImageView: UIImageView!
    
     @IBOutlet weak var contentView: UIView!
     
@@ -31,6 +36,13 @@ class HamburgerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var user = User.currentUser
+        
+        self.menuProfileImageView.setImageWithURL(user?.profileBannerUrl)
+        
+    
+        self.profileButton.setTitle(user!.name, forState: .Normal)
 
         // Do any additional setup after loading the view.
         timelineViewController = self.storyBoard.instantiateViewControllerWithIdentifier("TweetsViewController") as UIViewController
@@ -75,12 +87,15 @@ class HamburgerViewController: UIViewController {
     @IBAction func onMenuButtonPressed(sender: UIButton) {
         if sender == profileButton {
             println("profile pressed!")
+            hideMenu()
             self.activeViewController = profileViewController
         } else if sender == timelineButton {
             println("timeline pressed!")
+            hideMenu()
             self.activeViewController = timelineViewController
         } else if sender == mentionButton {
             println("mention pressed!")
+            hideMenu()
             //self.activeViewController = mentionsViewController
         } else {
             println("unknown button pressed!")
@@ -91,8 +106,40 @@ class HamburgerViewController: UIViewController {
     
     @IBAction func onSwipe(sender: UISwipeGestureRecognizer) {
         if sender.state == .Ended {
-            self.contentViewXConstraint.constant = -160
+            if sender.direction == .Left {
+                hideMenu()
+            } else {
+                showMenu()
+            }
         }
+    }
+    
+    private func hideMenu() {
+        UIView.animateWithDuration(0.35,
+            delay: 0.0,
+            options: UIViewAnimationOptions.CurveEaseInOut,
+            animations: { () in
+                self.contentViewXConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            },
+            completion: { (finished) in
+                self.swipeGesture.direction = .Right
+            }
+        )
+    }
+    
+    private func showMenu() {
+        UIView.animateWithDuration(0.35,
+            delay: 0.0,
+            options: UIViewAnimationOptions.CurveEaseInOut,
+            animations: { () in
+                self.contentViewXConstraint.constant = -160
+                self.view.layoutIfNeeded()
+            },
+            completion: { (finished) in
+                self.swipeGesture.direction = .Left
+            }
+        )
     }
     /*
     // MARK: - Navigation
